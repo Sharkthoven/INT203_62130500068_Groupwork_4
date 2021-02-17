@@ -12,6 +12,8 @@ const app = {
             searchIconBTN: true,
             cancelFunc: false,
             noPhoto: false,
+            expand: false,
+            pictureToExpand: "",
         }
     },
 
@@ -29,6 +31,7 @@ const app = {
         },
         searchingFunc() {
 
+            //Checking number of unshow photo
             let falseCount = 0;
 
             for (let i = 0; i < this.photosets.length; i++) {
@@ -45,7 +48,12 @@ const app = {
                     this.noPhoto = true;
                 }
             }
+        },
+        expanded(index) {
+            this.expand = true;
+            this.pictureToExpand = this.photosets[index].url;
         }
+        
     },
 
     computed: {
@@ -57,4 +65,5 @@ const app = {
         }
     }
 }
+
 Vue.createApp(app).mount('#app')
